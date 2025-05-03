@@ -1,0 +1,104 @@
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, sans-serif;
+}
+
+.circle-container {
+    position: relative;
+    width: 90%;
+    height: 90%;
+}
+
+.center-block {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100px;
+    height: 100px;
+    background-color: #5fb0e6;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 32px;
+    font-weight: bold;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    z-index: 10;
+}
+
+.circle-block {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background-color: #5fb0e6;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 32px;
+    font-weight: bold;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    
+    /* Центрируем блок */
+    top: 50%;
+    left: 50%;
+    margin: -50px 0 0 -50px; /* Смещаем на половину ширины/высоты */
+    
+    /* Поворачиваем и смещаем по радиусу */
+    transform: 
+        rotate(calc((var(--i) - 1) * 30deg)) /* Поворот против часовой (для коррекции) */
+        translate(0, -350px)                  /* Отодвигаем от центра */
+        rotate(calc((var(--i) - 1) * -30deg)); /* Компенсируем поворот текста */
+}
+.connection {
+    position: absolute;
+    background-color: #519dd0;
+    height: 3px;
+    transform-origin: 0 0;
+    z-index: -1;
+}
+
+/* 1-0 (центр) */
+.connection-1-0 {
+    width: 250px;
+    top: 50%;
+    left: 50%;
+    transform: rotate(90deg) translateX(-300px);
+}
+.connection-0-12 {
+    width: 250px;
+    top: 50%;
+    left: 50%;
+    transform: rotate(60deg) translateX(-300px);
+}
+
+/* 1-12 */
+.connection-0-8 {
+    width: 250px;
+    top: 50%;
+    left: 50%;
+    transform: rotate(-60deg) translateX(-300px);
+}
+
+/* 12-8 */
+.connection-0-4 {
+    width: 300px;
+    top: 50%;
+    left: 50%;
+    transform: translateY(0px) translateX(0px);
+}
+.connection-1-12 {
+    width: 150px;
+    top: 50%;
+    left: 50%;
+    transform: rotate(-15deg) translateY(-350px) translateX(-50px);
+}
+
