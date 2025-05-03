@@ -37,21 +37,23 @@
     }
     function createGraf(){
         const output = document.getElementById('output');
-        output.innerHTML='';
         let n = document.getElementById('in').value;
+        output.innerHTML='';
+        const radius = 140;
         for (let i = 1; i <= n; i++) {
             const ball = document.createElement('div');
             ball.className='ball';
             ball.innerText=i;
-            ball.style.left=Math.random()*(output.offsetWidth-50)+output.offsetLeft+"px";
-            ball.style.top=Math.random()*(output.offsetHeight-50)+output.offsetTop+"px";
+            const angle = (i / n) * (2 * Math.PI);
+            ball.style.left=radius * Math.cos(angle) + (output.offsetWidth / 2)+"px";
+            ball.style.top=radius * Math.sin(angle) + (output.offsetHeight / 2)+"px";
             output.append(ball);
         }
         change();
     }
     function click()
     {
-        this.innerText= this.innerText=='' ? '': '0' ? '1' : '0' ;
+        this.innerText= this.innerText=='0' ? '1' : '0' ;
         let cell = this.cellIndex;
         let row = this.parentNode.rowIndex;
         document.getElementById("table").rows[cell].cells[row].innerText=this.innerText;

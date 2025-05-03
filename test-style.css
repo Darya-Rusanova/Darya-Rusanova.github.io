@@ -15,13 +15,11 @@ th {
     width: 90%;
     padding: 5px;
     box-sizing: border-box;
-    border: solid;
     text-align: center;
     font-size: 12px;
 }
 #conyainer{
     box-sizing: border-box;
-    border: solid;
     width: 800px;
     height: 400px;
     position: relative;
