@@ -13,18 +13,18 @@
         <!-- Центральный блок -->
         <div class="center block">0</div>
         <!-- Блоки по кругу -->
-        <a href="first.html"><div class="circle-block" style="--i: 1">1</div></a>
-        <div class="circle-block" style="--i: 2">2</div>
-        <div class="circle-block" style="--i: 3">3</div>
-        <div class="circle-block" style="--i: 4">4</div>
-        <div class="circle-block" style="--i: 5">5</div>
-        <div class="circle-block" style="--i: 6">6</div>
-        <div class="circle-block" style="--i: 7">7</div>
-        <div class="circle-block" style="--i: 8">8</div>
-        <div class="circle-block" style="--i: 9">9</div>
-        <div class="circle-block" style="--i: 10">10</div>
-        <div class="circle-block" style="--i: 11">11</div>
-        <div class="circle-block" style="--i: 12">12</div>
+        <a href="first.html"><div class="circle block" style="--i: 1">1</div></a>
+        <div class="circle block" style="--i: 2">2</div>
+        <div class="circle block" style="--i: 3">3</div>
+        <div class="circle block" style="--i: 4">4</div>
+        <div class="circle block" style="--i: 5">5</div>
+        <div class="circle block" style="--i: 6">6</div>
+        <div class="circle block" style="--i: 7">7</div>
+        <div class="circle block" style="--i: 8">8</div>
+        <div class="circle block" style="--i: 9">9</div>
+        <div class="circle block" style="--i: 10">10</div>
+        <div class="circle block" style="--i: 11">11</div>
+        <div class="circle block" style="--i: 12">12</div>
     </div>
 
     <script>
@@ -57,8 +57,8 @@
                 ctx.clearRect(0, 0, canvas.width, canvas.height);
                 
                 // Получаем координаты всех элементов
-                const center = document.querySelector('.center-block');
-                const blocks = Array.from(document.querySelectorAll('.circle-block'));
+                const center = document.querySelector('.center');
+                const blocks = Array.from(document.querySelectorAll('.circle'));
                 
                 const centerPos = getCenter(center);
                 const blockPositions = blocks.map(block => getCenter(block));

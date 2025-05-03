@@ -59,39 +59,3 @@ canvas{
     z-index: -1;
 }
 
-/* 1-0 (центр) */
-.connection-1-0 {
-    width: 250px;
-    top: 50%;
-    left: 50%;
-    transform: rotate(90deg) translateX(-300px);
-}
-.connection-0-12 {
-    width: 250px;
-    top: 50%;
-    left: 50%;
-    transform: rotate(60deg) translateX(-300px);
-}
-
-/* 1-12 */
-.connection-0-8 {
-    width: 250px;
-    top: 50%;
-    left: 50%;
-    transform: rotate(-60deg) translateX(-300px);
-}
-
-/* 12-8 */
-.connection-0-4 {
-    width: 300px;
-    top: 50%;
-    left: 50%;
-    transform: translateY(0px) translateX(0px);
-}
-.connection-1-12 {
-    width: 150px;
-    top: 50%;
-    left: 50%;
-    transform: rotate(-15deg) translateY(-350px) translateX(-50px);
-}
-
