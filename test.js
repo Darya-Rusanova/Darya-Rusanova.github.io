@@ -39,7 +39,7 @@
         const output = document.getElementById('output');
         let n = document.getElementById('in').value;
         output.innerHTML='';
-        const radius = 140;
+        const radius = 180;
         for (let i = 1; i <= n; i++) {
             const ball = document.createElement('div');
             ball.className='ball';

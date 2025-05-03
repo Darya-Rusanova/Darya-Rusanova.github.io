@@ -8,11 +8,12 @@
     <title>Document</title>
 </head>
 <body>
-    <div class="circle-container">
+    <div class="circle-container" >
+        <canvas id="connectionCanvas"></canvas>
         <!-- Центральный блок -->
         <div class="center-block">0</div>
         <!-- Блоки по кругу -->
-        <div class="circle-block" style="--i: 1">1</div>
+        <a href="first.html"><div class="circle-block" style="--i: 1">1</div></a>
         <div class="circle-block" style="--i: 2">2</div>
         <div class="circle-block" style="--i: 3">3</div>
         <div class="circle-block" style="--i: 4">4</div>
@@ -24,13 +25,74 @@
         <div class="circle-block" style="--i: 10">10</div>
         <div class="circle-block" style="--i: 11">11</div>
         <div class="circle-block" style="--i: 12">12</div>
-         <!-- Соединительные линии -->
-         <div class="connection connection-1-0"></div>
-         <div class="connection connection-0-12"></div>
-         <div class="connection connection-0-8"></div>
-         <div class="connection connection-0-4"></div>
-         <div class="connection connection-1-12"></div>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const canvas = document.getElementById('connectionCanvas');
+            const ctx = canvas.getContext('2d');
+            
+            // Устанавливаем размер canvas равным его отображаемому размеру
+            function resizeCanvas() {
+                const container = document.querySelector('.circle-container');
+                canvas.width = container.offsetWidth;
+                canvas.height = container.offsetHeight;
+                drawConnections();
+            }
+            
+            // Получаем координаты центра элемента
+            function getCenter(el) {
+                const rect = el.getBoundingClientRect();
+                const container = document.querySelector('.circle-container');
+                const containerRect = container.getBoundingClientRect();
+                return {
+                    x: rect.left + rect.width/2 - containerRect.left,
+                    y: rect.top + rect.height/2 - containerRect.top
+                };
+            }
+            
+            // Рисуем все соединения
+            function drawConnections() {
+                // Очищаем canvas
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                
+                // Получаем координаты всех элементов
+                const center = document.querySelector('.center-block');
+                const blocks = Array.from(document.querySelectorAll('.circle-block'));
+                
+                const centerPos = getCenter(center);
+                const blockPositions = blocks.map(block => getCenter(block));
+                
+                // Настройки линий
+                ctx.strokeStyle = '#5fb0e6';
+                ctx.lineWidth = 3;
+                
+                // Соединяем все вершины с центром
+                blockPositions.forEach(pos => {
+                    drawLine(centerPos, pos);
+                });
+                
+                // Соединяем вершины между собой (полный граф)
+                for (let i = 0; i < blockPositions.length; i++) {
+                    for (let j = i + 1; j < blockPositions.length; j++) {
+                        drawLine(blockPositions[i], blockPositions[j]);
+                    }
+                }
+            }
+            
+            // Функция для рисования линии между двумя точками
+            function drawLine(point1, point2) {
+                ctx.beginPath();
+                ctx.moveTo(point1.x, point1.y);
+                ctx.lineTo(point2.x, point2.y);
+                ctx.stroke();
+            }
+            
+            // Инициализация и обработка изменения размера окна
+            resizeCanvas();
+            window.addEventListener('resize', resizeCanvas);
+        });
+    </script>
     
 </body>
 </html>

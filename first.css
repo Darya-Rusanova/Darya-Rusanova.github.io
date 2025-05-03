@@ -1,0 +1,111 @@
+.container{
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 100px auto;
+    grid-template-areas:
+       "head"
+       "body"
+}
+.header{
+    grid-area: head;
+}
+.exit{
+    background-color: #1981c6;
+    border-radius: 50px 50px;
+    width: 60px;
+    height: 60px;
+    text-align: left;
+    margin: 10px;
+    margin-left: 10px;
+}
+.body{
+    grid-area: body;
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: auto 100px auto auto;
+    grid-template-areas:
+       "exercise"
+       "in"
+       "table"
+       "output"
+
+}
+#in{
+    grid-area: in; 
+    background-color: white;
+    border-radius: 35px 35px;
+    border: none;
+    padding: 20px;
+    width: 40%;
+    text-align: center;
+    margin: 0 auto;
+    font-size: 25px;
+    margin-top: 30px;
+}
+table {
+    margin: 0 auto;
+    width: 50%;
+    border-collapse: collapse;
+    margin: 20px auto;
+    border-radius: 30px 30px;
+}
+th, td { 
+    background-color: white;
+    border: 1px solid #1981c6;
+    padding: 10px;
+    text-align: center;
+}
+
+th {
+    background-color: #519dd0;
+    color: white;
+}
+#input {
+    grid-area: table;
+    width: 90%;
+    padding: 5px;
+    box-sizing: border-box;
+    text-align: center;
+    font-size: 23px;
+    margin: 0 auto;
+}
+.output{
+    margin: 0 auto;
+    grid-area: output;
+    box-sizing: border-box;
+    width: 800px;
+    height: 400px;
+    position: relative;
+    margin-bottom: 50px;
+}
+#output, #canvas
+{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+.ball {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background-color:#519dd0;
+    color: white;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+}
+.exercise{
+    grid-area: exercise;
+    background-color: white;
+    border-radius: 35px 35px;
+    margin: 40px;
+    padding: 20px;
+    border: 15px solid #519dd0;
+    width: 70%;
+    height: auto;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 25px;
+}

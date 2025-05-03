@@ -58,6 +58,11 @@ body {
         translate(0, -350px)                  /* Отодвигаем от центра */
         rotate(calc((var(--i) - 1) * -30deg)); /* Компенсируем поворот текста */
 }
+canvas{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
 .connection {
     position: absolute;
     background-color: #519dd0;
