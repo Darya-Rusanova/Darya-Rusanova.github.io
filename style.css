@@ -14,11 +14,10 @@ body {
     height: 90%;
 }
 
-.center-block {
+.block{
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
     width: 100px;
     height: 100px;
     background-color: #5fb0e6;
@@ -30,26 +29,15 @@ body {
     font-size: 32px;
     font-weight: bold;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+}
+
+.center {
+    transform: translate(-50%, -50%);
     z-index: 10;
 }
 
-.circle-block {
-    position: absolute;
-    width: 100px;
-    height: 100px;
-    background-color: #5fb0e6;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    font-size: 32px;
-    font-weight: bold;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    
+.circle{
     /* Центрируем блок */
-    top: 50%;
-    left: 50%;
     margin: -50px 0 0 -50px; /* Смещаем на половину ширины/высоты */
     
     /* Поворачиваем и смещаем по радиусу */
