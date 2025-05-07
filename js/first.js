@@ -36,6 +36,8 @@
 
         container.appendChild(table);
         createGraf();
+        document.getElementById('start').style.visibility = 'visible';
+        document.getElementsByClassName('way')[0].style.visibility = 'visible';
     }
     function createGraf(){
         const output = document.getElementById('output');

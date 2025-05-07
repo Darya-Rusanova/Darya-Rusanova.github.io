@@ -31,15 +31,16 @@
     width: 60px;
     height: 60px;
 }
-#start, #result{
+#start{
     border: 5px solid #1981c6;
     border-radius: 50px 50px;
     height: 75px;
     background-color: #1981c6;
+    visibility: hidden;
 }
 .way{
     width: 40%;
-    font-size: 24px;
+    font-size: 25px;
     margin: 0 auto;
     background-color: white;
     border-radius: 30px 30px;
@@ -47,7 +48,8 @@
     text-align: center;
     margin-top: 20px;
     padding: 15px;
-
+    visibility: hidden;
+    height: 45px;
 }
 
 .body{
