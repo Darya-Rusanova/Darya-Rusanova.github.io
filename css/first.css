@@ -11,13 +11,13 @@
 }
 #exit{
     text-align: left;
-    margin: 10px;
-    margin-left: 10px;
+    margin: 25px;
 }
 .buttons{
     margin: 0 auto;
 }
 .buttons>*{
+    cursor: pointer;
     margin: 30px;
     color: white;
     font-size: 24px;
@@ -28,8 +28,8 @@
     text-align: center;
     background-color: #1981c6;
     border-radius: 50px 50px;
-    width: 60px;
-    height: 60px;
+    width: 90px;
+    height: 90px;
 }
 #start{
     border: 5px solid #1981c6;
@@ -39,7 +39,7 @@
     visibility: hidden;
 }
 .way{
-    width: 40%;
+    width: 70%;
     font-size: 25px;
     margin: 0 auto;
     background-color: white;
@@ -50,31 +50,44 @@
     padding: 15px;
     visibility: hidden;
     height: 45px;
+    margin-left: 20%;
 }
 
 .body{
     grid-area: body;
     display: grid;
-    grid-template-columns: 100%;
-    grid-template-rows: auto 100px auto auto;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: auto 100px auto;
     grid-template-areas:
-       "exercise"
-       "in"
-       "table"
-       "output"
+       "exercise exercise"
+       "in in"
+       "table output"
 
 }
+.input{
+    grid-area: in;     
+    margin: 0 auto;
+}
+.input>*{
+    display: inline-block;
+}
+#repeat{
+    width: 70px;
+    height: 70px;   
+    margin-left: 30px;
+    margin-bottom: -20px;
+    cursor: pointer;
+}
 #in{
-    grid-area: in; 
     background-color: white;
     border-radius: 35px 35px;
     border: none;
     padding: 20px;
-    width: 40%;
+    width: 400px;
     text-align: center;
     margin: 0 auto;
     font-size: 25px;
-    margin-top: 30px;
+    margin-top: 50px;
 }
 table {
     margin: 0 auto;
@@ -96,12 +109,12 @@ th {
 }
 #input {
     grid-area: table;
-    width: 90%;
     padding: 5px;
     box-sizing: border-box;
     text-align: center;
-    font-size: 23px;
+    font-size: 25px;
     margin: 0 auto;
+    margin-top: 50px;
 }
 .output{
     margin: 0 auto;
@@ -111,6 +124,7 @@ th {
     height: 400px;
     position: relative;
     margin-bottom: 50px;
+    margin-top: 10%;
 }
 #output, #canvas
 {

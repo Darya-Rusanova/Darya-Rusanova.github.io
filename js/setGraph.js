@@ -11,6 +11,9 @@
         container.innerHTML='';
         const table = document.createElement('table');
         table.id='table';
+        if (n > 15){
+            table.style.fontSize="17px";
+        }
 
         let row =document.createElement('tr');
         for (let j = 0; j <= n; j++) {

@@ -3,6 +3,7 @@
 
     function init() {
         document.getElementById('in').addEventListener('change', generateTable);
+        document.getElementById('repeat').addEventListener('click', generateTable);
     }
 
     function generateTable(){
@@ -12,6 +13,9 @@
         container.innerHTML='';
         const table = document.createElement('table');
         table.id='table';
+        if (n > 15){
+            table.style.fontSize="17px";
+        }
 
         const matrix = Array.from({ length: n + 1}, () => Array(n).fill(0));
         for (let i = 1; i < n+1; i++) {
