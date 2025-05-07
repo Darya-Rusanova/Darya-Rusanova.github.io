@@ -9,15 +9,47 @@
 .header{
     grid-area: head;
 }
-.exit{
-    background-color: #1981c6;
-    border-radius: 50px 50px;
-    width: 60px;
-    height: 60px;
+#exit{
     text-align: left;
     margin: 10px;
     margin-left: 10px;
 }
+.buttons{
+    margin: 0 auto;
+}
+.buttons>*{
+    margin: 30px;
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    display: inline-block;
+}
+.button{
+    text-align: center;
+    background-color: #1981c6;
+    border-radius: 50px 50px;
+    width: 60px;
+    height: 60px;
+}
+#start, #result{
+    border: 5px solid #1981c6;
+    border-radius: 50px 50px;
+    height: 75px;
+    background-color: #1981c6;
+}
+.way{
+    width: 40%;
+    font-size: 24px;
+    margin: 0 auto;
+    background-color: white;
+    border-radius: 30px 30px;
+    border: 5px solid #519dd0;
+    text-align: center;
+    margin-top: 20px;
+    padding: 15px;
+
+}
+
 .body{
     grid-area: body;
     display: grid;
@@ -95,6 +127,9 @@ th {
     align-items: center;
     justify-content: center;
     font-size: 24px;
+}
+.checked, .ball:hover{
+    background-color:#e8b9ea;
 }
 .exercise{
     grid-area: exercise;
