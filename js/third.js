@@ -144,7 +144,7 @@
                         q.push(to); 
                         d[to] = d[v] + 1; 
                         p[to] = v; 
-                        ans.innerText+=(g[v][i])+' ';
+                        ans.innerText+=" " + (g[v][i]);
                     }
                 }
             }
