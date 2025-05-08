@@ -147,6 +147,12 @@ th {
 .checked, .ball:hover{
     background-color:#e8b9ea;
 }
+.pass{
+    background-color: #de8fbd;
+}
+#here{
+    background-color: #e8b9ea;
+}
 .exercise{
     grid-area: exercise;
     background-color: white;

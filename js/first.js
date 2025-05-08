@@ -87,16 +87,14 @@
             {
                 if (table.rows[i].cells[j].innerText=='1')
                 {
-                    let x1 = balls[i-1].offsetLeft+25-canvas.style.left; // X-координата первой точки
-                    let y1 = balls[i-1].offsetTop+25-canvas.style.top; // Y-координата первой точки
-                    let x2 = balls[j-1].offsetLeft+25-canvas.style.left; // X-координата второй точки
-                    let y2 = balls[j-1].offsetTop+25-canvas.style.top; // Y-координата второй точки
-                    console.log(x1,x2,y1,y2);
-                    console.log(canvas.offsetTop);
-                    ctx.beginPath(); // Начинаем новый путь
-                    ctx.moveTo(x1, y1); // Перемещаемся к первой точке
-                    ctx.lineTo(x2, y2); // Рисуем линию ко второй точке
-                    ctx.stroke(); // Отображаем линию
+                    let x1 = balls[i-1].offsetLeft+25-canvas.style.left;
+                    let y1 = balls[i-1].offsetTop+25-canvas.style.top;
+                    let x2 = balls[j-1].offsetLeft+25-canvas.style.left;
+                    let y2 = balls[j-1].offsetTop+25-canvas.style.top;
+                    ctx.beginPath();
+                    ctx.moveTo(x1, y1);
+                    ctx.lineTo(x2, y2); 
+                    ctx.stroke();
                 }
             }
         }
@@ -108,7 +106,6 @@
         const begin = Number(document.getElementsByClassName("checked")[0].innerText);
         const ans = document.getElementsByClassName("way")[0];
         ans.innerText='';
-        console.log(begin);
         let g=new Array(n);
         for(let i = 1; i<=n;i++)
         {
@@ -120,22 +117,37 @@
             g.push(p);
         }
         let used=new Array(n); 
+        let q=new Array; 
         for (let i=0; i<=n; ++i) used[i] = 0;
-        ans.innerText+=begin+' ';
         dfs(begin);
         
         function dfs(v){
             used[v]=1;
+            q.push(v);
+            if (v!=begin) ans.innerText+="=>"+(v);
+            else ans.innerText+=(v);
             for(let i = 0; i<g[v].length; i++)
             {
-                console.log(g[v]);
                 if (used[g[v][i]]!==1)
                 {
-                    console.log(used);
-                    ans.innerText+=(g[v][i])+' ';
                     dfs(g[v][i]);
+                    ans.innerText+="=>"+(v);
+                    q.push(v);
                 }
             }
         }
+        document.getElementsByClassName("checked")[0].id="here";
+
+        let timer = setInterval(function() {
+            console.log(q);
+            if (q.length===0) clearInterval(timer);
+            
+            document.getElementById("here").id="";
+            document.getElementsByClassName("ball")[q[0]-1].id="here";
+            document.getElementsByClassName("ball")[q[0]-1].className+=" pass";
+
+            q.splice(0, 1);
+          
+        }, 500);
     }
 })();
