@@ -166,3 +166,51 @@ th {
     text-align: center;
     font-size: 25px;
 }
+#res{
+    width: 35%;
+    text-align: center;
+    font-size: 40px;
+    border: 15px solid #519dd0;
+    border-radius: 35px 35px;
+}
+#res{
+    transition: display 0.2s allow-discrete, overlay 0.2s allow-discrete;
+  
+    animation: close 0.3s forwards;
+    &[open] {
+      animation: open 0.3s forwards;
+    }
+}
+  
+  @keyframes open {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes close {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+}
+body:has(dialog[open]) {
+    overflow: hidden;
+}
+#res::backdrop {
+    background-color: rgb(0 0 0 / 30%);
+}
+#res>p{
+    margin-top: -5px;
+    height: auto;
+}
+#close{
+    grid-area: close;
+    cursor: pointer;
+    margin-left: 85%;
+}
