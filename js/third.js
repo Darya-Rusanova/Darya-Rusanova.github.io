@@ -91,8 +91,6 @@
                     let y1 = balls[i-1].offsetTop+25-canvas.style.top; // Y-координата первой точки
                     let x2 = balls[j-1].offsetLeft+25-canvas.style.left; // X-координата второй точки
                     let y2 = balls[j-1].offsetTop+25-canvas.style.top; // Y-координата второй точки
-                    console.log(x1,x2,y1,y2);
-                    console.log(canvas.offsetTop);
                     ctx.beginPath(); // Начинаем новый путь
                     ctx.moveTo(x1, y1); // Перемещаемся к первой точке
                     ctx.lineTo(x2, y2); // Рисуем линию ко второй точке
@@ -104,6 +102,7 @@
     function start()
     {
         sessionStorage.setItem(3,1);
+        Array.from(document.getElementsByClassName("ball")).forEach((element) => element.classList.remove("pass"));
         const table = document.getElementById("table");
         const n = document.getElementById('in').value;
         const begin = Number(document.getElementsByClassName("checked")[0].innerText);
@@ -120,10 +119,13 @@
             g.push(p);
         }
         ans.innerText+=begin+' ';
+        
+        let path = [];
         bfs(begin);
         
         function bfs(s){
             let q = []; 
+            path.push(s);
             q.push(s); // Добавляем начальную вершину в очередь
 
             let used = new Array(n).fill(false); // Массив для отслеживания посещенных вершин
@@ -141,11 +143,32 @@
                         q.push(to); 
                         d[to] = d[v] + 1; 
                         p[to] = v; 
+                        path.push(v);
+                        path.push(to);
                         ans.innerText+=" " + (g[v][i]);
                     }
                 }
             }
+            console.log(path);
             
         }
+        
+        document.getElementsByClassName("checked")[0].id="here";
+        const balls=document.getElementById("output").children;
+    
+        let timer = setInterval(function() {
+            if (path.length===0) {
+                clearInterval(timer);
+                document.getElementById("here").id="";
+            }
+            else
+            {
+                document.getElementById("here").id="";
+                document.getElementsByClassName("ball")[path[0]-1].id="here";
+                document.getElementsByClassName("ball")[path[0]-1].className+=" pass";
+                path.splice(0,1);
+            }
+        }, 500);   
+        
     }
 })();

@@ -143,7 +143,10 @@
         const balls=document.getElementById("output").children;
 
         let timer = setInterval(function() {
-            if (q.length===0) clearInterval(timer);
+            if (q.length===0) {
+                clearInterval(timer);
+                document.getElementById("here").id="";
+            }
             else
             {
                 document.getElementById("here").id="";
