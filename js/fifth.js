@@ -100,14 +100,14 @@
         const ans = document.getElementsByClassName("way")[0]; 
         ans.innerHTML = ''; 
         let g=new Array(n);
-        for(let i = 1; i<=n;i++)
+        for(let i = 0; i<n;i++)
         {
             let p=new Array;
-            for(let j = 1;j<=n;j++)
+            for(let j = 0;j<n;j++)
             {
-                if (Number(table.rows[i].cells[j].innerText)) p.push(j);
+                if (Number(table.rows[i+1].cells[j+1].innerText)) p.push(j);
             }
-            g.push(p);
+            g[i] = p;
         }
         let used=new Array(n); 
         let comp = 0; 
@@ -130,8 +130,8 @@
             // Поиск компонент связности
             for (let i = 0; i < n; ++i) {
                 if (!used[i]) {
-                    dfs(i); 
                     comp++;
+                    dfs(i);         
                 }
             }   
             return comp;  
