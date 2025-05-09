@@ -3,9 +3,8 @@
 
     function init() {
         let balls=document.getElementsByClassName("block");
-        for (let i = 0 ; i < 13; i++)
+        for (let i = 1; i < 13; i++)
         {
-            console.log(sessionStorage[i]);
             if (sessionStorage.getItem(i))
             {
                 balls[i].classList.add("connect");
