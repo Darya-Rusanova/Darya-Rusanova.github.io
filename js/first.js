@@ -128,14 +128,14 @@
         function dfs(v){
             used[v]=1;
             q.push(v);
-            if (v!=begin) ans.innerText+="=>"+(v);
+            if (v!=begin) ans.innerText+=" "+(v);
             else ans.innerText+=(v);
             for(let i = 0; i<g[v].length; i++)
             {
                 if (used[g[v][i]]!==1)
                 {
                     dfs(g[v][i]);
-                    ans.innerText+="=>"+(v);
+                    ans.innerText+=" "+(v);
                     q.push(v);
                 }
             }
