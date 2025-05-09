@@ -81,6 +81,8 @@
         let canvas = document.getElementById("canvas");
         let ctx = canvas.getContext("2d");
         ctx.clearRect(0, 0, canvas.width, canvas.height);
+        Array.from(document.getElementsByClassName("ball")).forEach((element) => element.classList.remove("pass"));
+        
         for(let i=1;i<=n;i++)
         {
             for(let j=i+1;j<=n;j++)
@@ -101,6 +103,7 @@
     }
     function start()
     {
+        Array.from(document.getElementsByClassName("ball")).forEach((element) => element.classList.remove("pass"));
         const table = document.getElementById("table");
         const n = document.getElementById('in').value;
         const begin = Number(document.getElementsByClassName("checked")[0].innerText);
@@ -137,17 +140,17 @@
             }
         }
         document.getElementsByClassName("checked")[0].id="here";
+        const balls=document.getElementById("output").children;
 
         let timer = setInterval(function() {
-            console.log(q);
             if (q.length===0) clearInterval(timer);
-            
-            document.getElementById("here").id="";
-            document.getElementsByClassName("ball")[q[0]-1].id="here";
-            document.getElementsByClassName("ball")[q[0]-1].className+=" pass";
-
-            q.splice(0, 1);
-          
+            else
+            {
+                document.getElementById("here").id="";
+                document.getElementsByClassName("ball")[q[0]-1].id="here";
+                document.getElementsByClassName("ball")[q[0]-1].className+=" pass";
+                q.splice(0,1);
+            }
         }, 500);
     }
 })();
