@@ -103,6 +103,7 @@
     }
     function start()
     {
+        sessionStorage.setItem(1,1);
         Array.from(document.getElementsByClassName("ball")).forEach((element) => element.classList.remove("pass"));
         const table = document.getElementById("table");
         const n = document.getElementById('in').value;
