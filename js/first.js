@@ -135,7 +135,6 @@
                 if (used[g[v][i]]!==1)
                 {
                     dfs(g[v][i]);
-                    ans.innerText+=" "+(v);
                     q.push(v);
                 }
             }
