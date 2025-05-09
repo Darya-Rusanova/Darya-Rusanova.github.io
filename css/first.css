@@ -126,7 +126,7 @@ th {
     margin-bottom: 50px;
     margin-top: 10%;
 }
-#output, #canvas
+#output, #canvas,#output-degree
 {
     position: absolute;
     width: 100%;
@@ -138,6 +138,15 @@ th {
     border-radius: 50%;
     background-color:#519dd0;
     color: white;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+}
+.degree{
+    width: 44px;
+    height: 44px;
     position: absolute;
     display: flex;
     align-items: center;

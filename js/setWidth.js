@@ -31,7 +31,7 @@
                     cell.textContent ='v'+i;
                 }else if (j == i){
                     cell.textContent ='';
-                }else{
+                }else if (i <= j){
                     const input = document.createElement('input');
                     input.type = 'text';
                     input.className = 'table-input';
