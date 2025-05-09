@@ -95,6 +95,7 @@
     }
     function start()
     {
+        sessionStorage.setItem(5,1);
         const table = document.getElementById("table");
         const n = document.getElementById('in').value;
         const ans = document.getElementsByClassName("way")[0]; 

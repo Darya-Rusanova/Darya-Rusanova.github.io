@@ -103,12 +103,12 @@
     }
     function start()
     {
+        sessionStorage.setItem(3,1);
         const table = document.getElementById("table");
         const n = document.getElementById('in').value;
         const begin = Number(document.getElementsByClassName("checked")[0].innerText);
         const ans = document.getElementsByClassName("way")[0];
         ans.innerText='';
-        console.log(begin);
         let g=new Array(n);
         for(let i = 1; i<=n;i++)
         {
@@ -119,9 +119,6 @@
             }
             g.push(p);
         }
-        let used=new Array(n).fill(0); 
-        let d = new Array(n).fill(0);
-        let p = new Array(n).fill(-1);
         ans.innerText+=begin+' ';
         bfs(begin);
         
