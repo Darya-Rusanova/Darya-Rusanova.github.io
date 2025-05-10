@@ -29,11 +29,11 @@
                 const cell = document.createElement(j === 0 ? 'th' : 'td');
                 if(j === 0) {
                     cell.textContent ='v'+i;
-                }else if (j == i){
-                    cell.textContent ='';
-                }else if (i <= j){
+                }else 
+                {
                     const input = document.createElement('input');
                     input.type = 'text';
+                    input.addEventListener("change",changeTable)
                     input.className = 'table-input';
                     cell.appendChild(input);
                     if (n > 12){
@@ -50,6 +50,13 @@
         createGraf();
         document.getElementById('start').style.visibility = 'visible';
         document.getElementsByClassName('way')[0].style.visibility = 'visible';
+    }
+    function changeTable()
+    {
+        let cell = this.parentNode.cellIndex;
+        let row = this.parentNode.parentNode.rowIndex;
+        document.getElementById("table").rows[cell].cells[row].children[0].value=this.value;
+        change();
     }
     function createGraf(){
         const output = document.getElementById('output');
