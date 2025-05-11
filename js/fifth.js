@@ -31,7 +31,7 @@
             for (let j = 0; j <= n; j++) {
                 const cell = document.createElement(j === 0 ? 'th' : 'td');
                 cell.textContent = j === 0 ? 'v'+i : j == i ? '' : 0;
-                cell.addEventListener("click", clickTable);
+                j === 0 ? 0 : j == i ? '' : cell.addEventListener("click", clickTable);
                 row.appendChild(cell);
             }
 
