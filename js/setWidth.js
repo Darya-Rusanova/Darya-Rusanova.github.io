@@ -132,31 +132,25 @@
             }
         }
         g.sort(compare);
-        console.log(g);
         let res =[];
         let tree_id=Array.from(Array(n+1).keys());
-        console.log(tree_id);
         for (let i = 0;i<g.length;i++)
         {
             if (tree_id[g[i][1]]!=tree_id[g[i][2]])
             {
                 res.push([g[i][1],g[i][2]])
-                console.log(res);
             }
             for (let j=1; j<=n; j++)
             {
-                console.log(tree_id[j], tree_id[g[i][2]]);
                 if (tree_id[j] == tree_id[g[i][2]])
                     tree_id[j] = tree_id[g[i][1]];
             }
         }
-        console.log(res);
         const balls=document.getElementById("output").children;
         ctx.strokeStyle='red';
         ctx.lineWidth = 15;
         for (let i =0;i<res.length;i++)
         {
-            console.log(balls[res[i][0]-1],balls[res[i][1]-1]);
             drawLine(balls[res[i][0]-1],balls[res[i][1]-1]);
         }
     } 
