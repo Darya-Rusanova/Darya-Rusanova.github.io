@@ -223,3 +223,9 @@ body:has(dialog[open]) {
     cursor: pointer;
     margin-left: 85%;
 }
+.table-input{
+    border: none;
+    width: 100%;
+    font-size: 20px;
+}
+

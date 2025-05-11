@@ -1,0 +1,16 @@
+.ball {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background-color:white;
+    color: black;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    border: 2px solid black;
+}
+.ball:hover{
+    background-color:white;
+}

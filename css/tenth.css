@@ -1,0 +1,118 @@
+.container{
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 100px auto;
+    grid-template-areas:
+       "head"
+       "body"
+}
+.body{
+    grid-area: body;
+    
+}
+.header{
+    grid-area: head;
+}
+#exit{
+    text-align: left;
+    margin: 25px;
+    text-align: center;
+    background-color: #1981c6;
+    border-radius: 50px 50px;
+    width: 90px;
+    height: 90px;
+}
+#start,#add,#delete{
+    border: 5px solid #1981c6;
+    border-radius: 50px 50px;
+    height: 75px;
+    background-color: #1981c6;
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+}
+#add,#delete{
+    width: 150px;
+}
+.way{
+    width: 40%;
+    font-size: 25px;
+    background-color: white;
+    border-radius: 30px 30px;
+    border: 5px solid #519dd0;
+    text-align: center;
+    margin-top: 20px;
+    padding: 15px;
+    height: 45px;
+    margin-bottom: -30px;
+}
+.exercise{
+    background-color: white;
+    border-radius: 35px 35px;
+    margin: 40px;
+    padding: 20px;
+    border: 15px solid #519dd0;
+    width: 70%;
+    height: auto;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 25px;
+}
+.input, .result{    
+    text-align: center;
+    padding: 10px;
+}
+.input>*{
+    display: inline-block;
+    margin: 20px;
+}
+.result>*{
+    display: inline-block;
+    margin-left: 40px;
+}
+#repeat{
+    width: 70px;
+    height: 70px;   
+    margin-left: 30px;
+    margin-bottom: -20px;
+    cursor: pointer;
+}
+
+#in{
+    background-color: white;
+    border-radius: 35px 35px;
+    border: none;
+    padding: 20px;
+    width: 400px;
+    text-align: center;
+    margin: 0 auto;
+    font-size: 25px;
+    margin-top: 50px;
+}
+.output{
+    margin: 0 auto;
+    grid-area: output;
+    box-sizing: border-box;
+    width: 800px;
+    height: 400px;
+    position: relative;
+    margin-bottom: 50px;
+    margin-top: 10%;
+}
+#output, #canvas{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+.ball {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background-color:#519dd0;
+    color: white;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+}
