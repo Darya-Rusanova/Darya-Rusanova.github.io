@@ -3,7 +3,9 @@
 
     function init() {
         document.getElementById('in').addEventListener('change', generateTable);
-        document.getElementById("start").addEventListener('click',prim)
+        document.getElementById("start").addEventListener('click',crus)
+        canvas = document.getElementById("canvas");
+        ctx = canvas.getContext("2d");
     }
 
     function generateTable(){
@@ -30,7 +32,7 @@
                 const cell = document.createElement(j === 0 ? 'th' : 'td');
                 if(j === 0) {
                     cell.textContent ='v'+i;
-                }else 
+                }else if (j!=i)
                 {
                     const input = document.createElement('input');
                     input.type = 'text';
@@ -76,33 +78,86 @@
     }
     function change()
     {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
         const n = document.getElementById('in').value;
         const table=document.getElementById("table");
         const balls=document.getElementById("output").children;
-        let canvas = document.getElementById("canvas");
-        let ctx = canvas.getContext("2d");
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.strokeStyle='black';
+        ctx.lineWidth = 1;
         for(let i=1;i<=n;i++)
         {
             for(let j=i+1;j<=n;j++)
             {
-                console.log(table.rows[i].cells[j].children[0].value)
                 if (table.rows[i].cells[j].children[0].value!='')
                 {
-                    let x1 = balls[i-1].offsetLeft+25-canvas.style.left;
-                    let y1 = balls[i-1].offsetTop+25-canvas.style.top;
-                    let x2 = balls[j-1].offsetLeft+25-canvas.style.left;
-                    let y2 = balls[j-1].offsetTop+25-canvas.style.top;
-                    ctx.beginPath();
-                    ctx.moveTo(x1, y1); 
-                    ctx.lineTo(x2, y2);
-                    ctx.stroke(); 
+                    drawLine(balls[i-1],balls[j-1]);
                 }
             }
         }
     }
-    function prim()
+    function drawLine(a,b)
     {
-        
+        let x1 = a.offsetLeft+25-canvas.style.left;
+        let y1 = a.offsetTop+25-canvas.style.top;
+        let x2 = b.offsetLeft+25-canvas.style.left;
+        let y2 = b.offsetTop+25-canvas.style.top;
+        ctx.beginPath();
+        ctx.moveTo(x1, y1); 
+        ctx.lineTo(x2, y2);
+        ctx.stroke(); 
+    }
+    function compare( a, b ) {
+        if ( a[0] < b[0]){
+            return -1;
+        }
+        if ( a[0] > b[0] ){
+            return 1;
+        }
+        return 0;
+    }
+    function crus()
+    {
+        const n = Number(document.getElementById('in').value);
+        let g=[];
+        let table = document.getElementById("table");
+        for (let i =1;i<=n;i++)
+        {
+            for (let j =i+1;j<=n;j++)
+            {
+                let v = Number(table.rows[i].cells[j].children[0].value);
+                    if (v!==0)
+                    {
+                        g.push([v,i,j]);
+                    }
+            }
+        }
+        g.sort(compare);
+        console.log(g);
+        let res =[];
+        let tree_id=Array.from(Array(n+1).keys());
+        console.log(tree_id);
+        for (let i = 0;i<g.length;i++)
+        {
+            if (tree_id[g[i][1]]!=tree_id[g[i][2]])
+            {
+                res.push([g[i][1],g[i][2]])
+                console.log(res);
+            }
+            for (let j=1; j<=n; j++)
+            {
+                console.log(tree_id[j], tree_id[g[i][2]]);
+                if (tree_id[j] == tree_id[g[i][2]])
+                    tree_id[j] = tree_id[g[i][1]];
+            }
+        }
+        console.log(res);
+        const balls=document.getElementById("output").children;
+        ctx.strokeStyle='red';
+        ctx.lineWidth = 15;
+        for (let i =0;i<res.length;i++)
+        {
+            console.log(balls[res[i][0]-1],balls[res[i][1]-1]);
+            drawLine(balls[res[i][0]-1],balls[res[i][1]-1]);
+        }
     } 
 })();
