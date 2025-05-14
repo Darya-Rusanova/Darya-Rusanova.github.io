@@ -3,7 +3,7 @@
 
     function init() {
         document.getElementById('in').addEventListener('change', generateTable);
-        document.getElementById("start").addEventListener('click',crus)
+        document.getElementById("start").addEventListener('click',daic)
         canvas = document.getElementById("canvas");
         ctx = canvas.getContext("2d");
     }
@@ -72,8 +72,15 @@
             const angle = (i / n) * (2 * Math.PI);
             ball.style.left=radius * Math.cos(angle) + (output.offsetWidth / 2)+"px";
             ball.style.top=radius * Math.sin(angle) + (output.offsetHeight / 2)+"px";
+            ball.addEventListener('click', clickBall);
             output.append(ball);
         }
+        change();
+    }
+    function clickBall()
+    {
+        Array.from(document.getElementsByClassName("ball")).forEach((element) => element.className="ball");
+        this.className="checked ball";
         change();
     }
     function change()
@@ -115,44 +122,63 @@
         }
         return 0;
     }
-    function crus()
+    function daic()
     {
-        sessionStorage.setItem(7,1);
+        sessionStorage.setItem(8,1);
         const n = Number(document.getElementById('in').value);
-        let g=[];
+        let g =[];
+        for (let i = 0; i <= n; i++) {
+            g.push([]);
+        }
         let table = document.getElementById("table");
         for (let i =1;i<=n;i++)
         {
-            for (let j =i+1;j<=n;j++)
+            for (let j =1;j<=n;j++)
             {
-                let v = Number(table.rows[i].cells[j].children[0].value);
-                    if (v!==0)
-                    {
-                        g.push([v,i,j]);
-                    }
+                if (i!=j)
+                {
+                    let v = Number(table.rows[i].cells[j].children[0].value);
+                        if (v!==0)
+                        {
+                            g[i].push([j,v]);
+                        }
+                }
             }
         }
-        g.sort(compare);
-        let res =[];
-        let tree_id=Array.from(Array(n+1).keys());
-        for (let i = 0;i<g.length;i++)
+        console.log(g);
+        const s = Number(document.getElementsByClassName("checked")[0].innerText);
+        let d = new Array(n+1).fill(10000000000), p = new Array(n), u = new Array(n+1).fill(false);
+        d[s]=0;
+        for(let i=0;i<n;i++)
         {
-            if (tree_id[g[i][1]]!=tree_id[g[i][2]])
-            {
-                res.push([g[i][1],g[i][2]])
-            }
-            for (let j=1; j<=n; j++)
-            {
-                if (tree_id[j] == tree_id[g[i][2]])
-                    tree_id[j] = tree_id[g[i][1]];
+            let v = -1;
+            for (let j=1; j<=n; ++j)
+                if (!u[j] && (v == -1 || d[j] < d[v]))
+                    v = j;
+            if (d[v] == 10000000000)
+                break;
+            u[v] = true;
+            console.log(v);
+            for (let j=0; j<g[v].length; ++j) {
+                let to = g[v][j][0], len = g[v][j][1];
+                if (d[v] + len < d[to]) {
+                    d[to] = d[v] + len;
+                    p[to] = v;
+                }
             }
         }
+        console.log(p);
         const balls=document.getElementById("output").children;
         ctx.strokeStyle='red';
         ctx.lineWidth = 15;
-        for (let i =0;i<res.length;i++)
+        for (let i=1;i<p.length;i++)
         {
-            drawLine(balls[res[i][0]-1],balls[res[i][1]-1]);
+            if (p[i]>0)
+            {
+                drawLine(balls[i-1],balls[p[i]-1]);
+                console.log(i,p[i]);
+            }
         }
+        
     } 
 })();
