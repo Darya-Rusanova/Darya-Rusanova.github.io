@@ -5,7 +5,7 @@
         document.getElementById('in').addEventListener('change', generateTable);
         document.getElementById('repeat').addEventListener('click', generateTable);
         document.getElementById("start").addEventListener('click',start);
-        createGraf();
+        createGraph();
     }
 
     function generateTable(){
@@ -39,11 +39,11 @@
         }
 
         container.appendChild(table);
-        createGraf();
+        createGraph();
         document.getElementById('start').style.visibility = 'visible';
         document.getElementsByClassName('way')[0].style.visibility = 'visible';
     }
-    function createGraf(){
+    function createGraph(){
         const output = document.getElementById('output');
         let n = document.getElementById('in').value;
         output.innerHTML='';

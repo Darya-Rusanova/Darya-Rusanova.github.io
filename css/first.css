@@ -31,7 +31,7 @@
     width: 90px;
     height: 90px;
 }
-#start{
+#start, #retry{
     border: 5px solid #1981c6;
     border-radius: 50px 50px;
     height: 75px;

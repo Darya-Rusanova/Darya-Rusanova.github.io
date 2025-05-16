@@ -50,7 +50,7 @@
         }
 
         container.appendChild(table);
-        createGraf();
+        createGraph();
         document.getElementById('start').style.visibility = 'visible';
     }
     function changeTable()
@@ -60,7 +60,7 @@
         document.getElementById("table").rows[cell].cells[row].children[0].value=this.value;
         change();
     }
-    function createGraf(){
+    function createGraph(){
         const output = document.getElementById('output');
         let n = document.getElementById('in').value;
         output.innerHTML='';

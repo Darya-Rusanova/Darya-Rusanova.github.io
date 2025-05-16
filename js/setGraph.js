@@ -36,10 +36,10 @@
         }
 
         container.appendChild(table);
-        createGraf();
+        createGraph();
         document.getElementById('start').style.visibility = 'visible';
     }
-    function createGraf(){
+    function createGraph(){
         const output = document.getElementById('output');
         let n = document.getElementById('in').value;
         output.innerHTML='';
