@@ -34,13 +34,13 @@
     
     function start()
     {
-        if(document.getElementById('in').value == 1){
-            message(1);
-            return;
-        }
         let table = document.getElementById("table").cloneNode(true);
         // let table = document.getElementById("table");
         let user_ans = '0'+document.getElementById("nodes").innerText.split(" ").join('');
+        if(user_ans.length == 1){
+            message(0);
+            return;
+        }
         let ans = 1;
         let parent = [user_ans[1]];
         for(let i = 1; i<user_ans.length-1; i++){
