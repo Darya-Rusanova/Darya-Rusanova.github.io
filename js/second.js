@@ -15,7 +15,6 @@
     }
 
     var checked_nodes = []
-    var nodes = []
 
     function message(mes){
         var msg = "";
@@ -25,6 +24,7 @@
                 break;
             case 1: 
                 msg = "Верно!";
+                sessionStorage.setItem(2,1);
                 break;
         }
         document.getElementById("message").innerText = msg;
@@ -34,11 +34,73 @@
     
     function start()
     {
-        sessionStorage.setItem(1,1);
-        const table = document.getElementById("table");
-        const n = document.getElementById('in').value;
-        // const begin = Number(document.getElementsByClassName("checked")[0].innerText);
-        
+        if(document.getElementById('in').value == 1){
+            message(1);
+            return;
+        }
+        let table = document.getElementById("table").cloneNode(true);
+        // let table = document.getElementById("table");
+        let user_ans = '0'+document.getElementById("nodes").innerText.split(" ").join('');
+        let ans = 1;
+        let parent = [user_ans[1]];
+        for(let i = 1; i<user_ans.length-1; i++){
+            console.log("now on "+ user_ans[i]+", next is " + user_ans[i+1])
+            console.log(parent)
+            test = i;
+            while(isEmpty(table.rows[user_ans[test]].cells)){
+                parent.pop();
+                table = clearColumn(table, user_ans[test]);
+                test--;
+                if(test == 0){
+                    message(0);
+                    return;
+                }
+            }
+            if(parent.length == 0){
+                for(let i = 1; i<user_ans.length; i++){
+                    if(!isEmpty(table.rows[user_ans[i]].cells)){
+                        console.log(user_ans[i] + "'s row is not empty")
+                        message(0);
+                        return;
+                        }
+                    }
+            }
+            // console.log(parent[parent.length-1], user_ans[i+1])
+            else if(table.rows[parent[parent.length-1]].cells[user_ans[i+1]].innerText == '1'){
+                table = clearColumn(table, user_ans[i+1]);
+                table = clearColumn(table, parent[parent.length-1]);
+                parent.push(user_ans[i+1]);
+            }
+            else{
+                ans = 0;
+                break;
+            }
+        }
+        for(let i = 1; i<user_ans.length; i++){
+                    if(!isEmpty(table.rows[user_ans[i]].cells)){
+                        console.log(user_ans[i] + "'s row is not empty")
+                        ans = 0;
+                        break;
+                        }
+                    }
+        message(ans);
+    }
+
+    function clearColumn(table, i){
+        Array.from(table.rows).forEach((row) => {
+            row.cells[i].innerText = "0";
+        })
+        return table;
+    }
+
+    function isEmpty(cells){
+        let ans = 1;
+        Array.from(cells).forEach((i) => {
+            if(i.innerText == "1"){
+                ans = 0;
+            };
+        })
+        return ans;
     }
 
     function generateTable(){
@@ -99,7 +161,7 @@
             Array.from(document.getElementsByClassName("checked ball")).forEach((element) => element.className="pass ball");
             this.className="checked ball";
         }
-        document.getElementById("nodes").innerText = checked_nodes.join('');
+        document.getElementById("nodes").innerText = checked_nodes.join(' ');
     }
     function createGraph(){
         
