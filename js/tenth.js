@@ -3,13 +3,14 @@
 
     function init() {
         document.getElementById('add').addEventListener('click', addBall);
-       // document.getElementById('delete').addEventListener('change', orchiectomy);
+        document.getElementById('delete').addEventListener('click', orchiectomy);
         //document.getElementById("start").addEventListener('click',daic)
         canvas = document.getElementById("canvas");
         ctx = canvas.getContext("2d");
     }
     let g= new Map;
     let l=[];
+    l.push([]);
     let used = new Set;
     function clickBall()
     {
@@ -17,7 +18,7 @@
         this.className="checked ball";
     }
     function addBall(){
-        if (l.length != 0) {
+        if (l[0].length != 0) {
             let prev= document.getElementsByClassName("checked")[0];
             if (!used.has(Number(document.getElementById("in").value))){
                 if (!g.has(Number(prev.innerHTML))) g.set(Number(prev.innerHTML), []);
@@ -29,9 +30,8 @@
             }
         }
         else {
-            l.push([]);
             l[0].push(Number(document.getElementById("in").value));
-            g.set(Number(document.getElementById("in").value), [Number(document.getElementById("in").value)]);
+            g.set(-1, [Number(document.getElementById("in").value)]);
             used.add(Number(document.getElementById("in").value));
             createBall();
         }
@@ -45,12 +45,41 @@
         ball.addEventListener('click', clickBall);
         output.append(ball);
     }
+    function orchiectomy()
+    {
+        let victim = Number(document.getElementById("in").value);
+        console.log(victim);
+        for (const [key,value] of g) {
+            newVal = g.get(key).filter(num => num !== victim);
+            g.set(key, newVal);
+        }
+        deleteRec(victim);
+        changePos();
+    }
+    function deleteRec(victim){
+        for (let[key, value] of g) {
+            console.log(key,value);
+            if (key === victim)
+            {
+                for(let j=0;j<value.length;j++)
+                {
+                    g.delete(j)
+                    deleteRec(value[j]);
+                }
+            }
+        }
+        g.delete(victim);
+        console.log(l,victim);
+        l[findIndex2D(l,victim)[0]].splice(findIndex2D(l,victim)[1],1);
+        used.delete(victim);
+        document.getElementById(victim).remove();
+    }
     function findIndex2D(arr, element) {
         for (let i = 0; i < arr.length; i++) {
             for (let j = 0; j < arr[i].length; j++) {
-            if (arr[i][j] === element) {
-                return [i, j];
-            }
+                if (arr[i][j] === element) {
+                    return [i, j];
+                }
             }
         }
         return -1; 
@@ -67,15 +96,17 @@
     }
     function change()
     {
-        console.log(g);
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         ctx.strokeStyle='black';
         ctx.lineWidth = 1;
         for (const [key, value] of g) {
-            for(let j=0;j<value.length;j++)
+            if (key!=-1)
             {
-                console.log(key,value[j]);
-                drawLine(document.getElementById(key),document.getElementById(value[j]));
+                for(let j=0;j<value.length;j++)
+                {
+                    console.log(g)
+                    drawLine(document.getElementById(key),document.getElementById(value[j]));
+                }
             }
         }
     }
