@@ -171,13 +171,13 @@ th {
     font-size: 24px;
 }
 .checked, .ball:hover{
-    background-color:#e8b9ea;
+    background-color:#de8fbd;
 }
 .pass{
     background-color: #de8fbd;
 }
 #here{
-    background-color: #e8b9ea;
+    background-color: #b164de;
 }
 .exercise{
     grid-area: exercise;
