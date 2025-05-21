@@ -10,11 +10,24 @@
 </head>
 <body>
     <div class="container">
-        <header>
+        <div class="header">
             <a href="../index.html">
-                <img src="../image/home.PNG" id="exit"/>
+                <img src="../image/home.PNG" class="button" id="exit"/>
             </a>
-        </header>
+            <img src="../image/info.PNG" class="button" id="info" onclick="window.notif.showModal()"/>
+        </div>
+
+        <dialog id="notif">
+            <div class="notif-head">
+                <h1>ПОМОЩЬ</h1> 
+                <img src="../image/close.PNG" alt="close" width="60px" height="60px" id="close-notif" onclick="window.notif.close()"/>
+            </div>
+            <div class="notif-body">
+                <p>1. Задайте дерево, вводя вершины по очереди в поле ввода и нажимая кнопку "добавить"</p>
+                <p>2. Для того, чтобы удалить вершину из дерева в поле ввода напишите номер вершины и нажмите кнопку "удалить"</p>
+            </div>
+        </dialog>
+
         <div class="body">
             <div class="exercise">
                 <p>Задайте дерево. Система закодирует по алгоритму Прюфера.</p>

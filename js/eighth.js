@@ -51,6 +51,7 @@
 
         container.appendChild(table);
         createGraph();
+        document.getElementsByClassName('way')[0].style.visibility = 'visible';
         document.getElementById('start').style.visibility = 'visible';
     }
     function changeTable()
