@@ -3,13 +3,18 @@
 
     function init() {
         document.getElementById("start").addEventListener('click', pruf);
+        document.getElementById("repeat").addEventListener("click",clear);
         canvas = document.getElementById("canvas");
         ctx = canvas.getContext("2d");
     }
     let g=[];
+    function clear(){
+        g=[];
+        createGraph();
+    }
     function pruf () {
         g=[];
-        let prufer_code = document.getElementById("in").value.split(' ').map(item => parseInt(item, 10)-1);
+        let prufer_code = document.getElementById("in").value.split(',').map(item => parseInt(item, 10)-1);
         console.log(prufer_code);
         for (let i=0;i<prufer_code.length;i++) 
         {
@@ -18,8 +23,6 @@
                 return 0;
             }
         }
-        if (prufer_code[prufer_code.length-1]<prufer_code.length)
-        {
             sessionStorage.setItem(11,1);
             console.log(prufer_code);
             let n = prufer_code.length + 2;
@@ -45,7 +48,7 @@
             }
             result.push([leaves[0], leaves[leaves.length-1]]);
             g=result;
-        }
+            console.log(g);
         createGraph();
     }
     function compare( a, b ) {
@@ -60,17 +63,19 @@
     
     function createGraph(){
         const output = document.getElementById('output');
-        let n = g.length+1;
         output.innerHTML='';
-        const radius = 180;
-        for (let i = 1; i <= n; i++) {
-            const ball = document.createElement('div');
-            ball.className='ball';
-            ball.innerText=i;
-            const angle = (i / n) * (2 * Math.PI);
-            ball.style.left=radius * Math.cos(angle) + (output.offsetWidth / 2)+"px";
-            ball.style.top=radius * Math.sin(angle) + (output.offsetHeight / 2)+"px";
-            output.appendChild(ball);
+        if (g.length!==0){
+            let n = g.length+1;
+            const radius = 180;
+            for (let i = 1; i <= n; i++) {
+                const ball = document.createElement('div');
+                ball.className='ball';
+                ball.innerText=i;
+                const angle = (i / n) * (2 * Math.PI);
+                ball.style.left=radius * Math.cos(angle) + (output.offsetWidth / 2)+"px";
+                ball.style.top=radius * Math.sin(angle) + (output.offsetHeight / 2)+"px";
+                output.appendChild(ball);
+            }
         }
         change();
     }
