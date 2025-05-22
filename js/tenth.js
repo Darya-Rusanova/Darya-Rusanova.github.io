@@ -125,7 +125,9 @@
         let n = document.getElementsByClassName("ball").length;
         for(let i=1;i<=n;i++)
         {
-            if (g[i].length===0) alert("пизда те копченый пиши нормально");
+            if (g[i].length===0) {
+                document.getElementById("al").showModal();
+            };
         }
         let degree=[];
         let killed=[];

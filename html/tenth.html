@@ -36,7 +36,7 @@
             <div class=input>
                 <input type="text" id="in" placeholder="Введите номер вершины">
                 <button class="buttons" id="add">Добавить</button>
-                <button class="buttons" id="delete">Удалить</button>
+                <button class="buttons" id="delete">Очистить</button>
             </div>
             <div class="output">
                 <canvas id="canvas" width="1600" height="800"></canvas>
@@ -46,6 +46,10 @@
                 <div class="way" id="res"></div>
                 <button id="start">ЗАКОДИРОВАТЬ</button>
             </div>
+             <dialog id="al">
+                <img src="../image/close.PNG" alt="close" width="60px" height="60px" id="close-alert" onclick="window.al.close()"/>
+                <p>Граф должен включать все вершины от 1 до самой большой. Повторите попытку<span id="message"></span></p>   
+            </dialog>
         </div>
     </div>
 </body>
