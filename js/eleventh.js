@@ -6,6 +6,15 @@
         document.getElementById("repeat").addEventListener("click",clear);
         canvas = document.getElementById("canvas");
         ctx = canvas.getContext("2d");
+    document.getElementById("in").addEventListener("input", prove);
+    }
+
+    function prove(){
+        this.value = this.value.replace(/[^\d,]/g, "");
+        if (this.value == '0') this.value='';
+        if (this.value > 20) {
+            this.value = 20;
+        }
     }
     let g=[];
     function clear(){

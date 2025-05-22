@@ -7,6 +7,15 @@
         document.getElementById('repeat').addEventListener('click', generateTable);
         document.getElementById("start").addEventListener('click',start);
         createGraph();
+        document.getElementById("in").addEventListener("input", prove);
+    }
+
+    function prove(){
+        this.value = this.value.replace(/[^\d]/g, "");
+        if (this.value == '0') this.value='';
+        if (this.value > 20) {
+            this.value = 20;
+        }
     }
 
     function generateTable(){

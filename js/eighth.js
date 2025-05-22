@@ -8,6 +8,15 @@
         document.getElementById("repeat").addEventListener("click",generateTable);
         canvas = document.getElementById("canvas");
         ctx = canvas.getContext("2d");
+        document.getElementById("in").addEventListener("input", prove);
+    }
+
+    function prove(){
+        this.value = this.value.replace(/[^\d]/g, "");
+        if (this.value == '0') this.value='';
+        if (this.value > 20) {
+            this.value = 20;
+        }
     }
 
     function generateTable(){
@@ -39,6 +48,7 @@
                     const input = document.createElement('input');
                     input.type = 'text';
                     input.addEventListener("change",changeTable)
+                    input.addEventListener("input", prove)
                     input.className = 'table-input';
                     cell.appendChild(input);
                     if (n > 12){

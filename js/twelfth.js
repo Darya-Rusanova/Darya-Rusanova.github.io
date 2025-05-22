@@ -4,6 +4,15 @@
     function init() {
         if (!sessionStorage.getItem(12)) document.getElementById("notif").showModal();
         document.getElementById("start").addEventListener('click', start);
+        document.getElementById("in").addEventListener("input", prove);
+    }
+
+    function prove(){
+        this.value = this.value.replace(/[^\d]/g, "");
+        if (this.value == '0') this.value='';
+        if (this.value > 20) {
+            this.value = 20;
+        }
     }
 
     let colors = ["rgb(244, 163, 0)", "rgb(192, 228, 200)", "rgb(255, 182, 193)", "rgb(185, 217, 217)", "rgb(217, 228, 255)", "rgb(246, 225, 179)", "rgb(214, 181, 17)", "rgb(247, 139, 158)", "rgb(156, 219, 146)", "rgb(191, 162, 112)", "rgb(242, 177, 163)", "rgb(217, 196, 163)", "rgb(232, 168, 215)", "rgb(154, 227, 212)", "rgb(239, 153, 219)", "rgb(247, 229, 211)", "rgb(248, 211, 161)", "rgb(193, 216, 179)", "rgb(225, 255, 179)", "rgb(135, 148, 217)"];
