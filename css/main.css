@@ -3,6 +3,13 @@ html{
     background-attachment: fixed;
     height: 100%;
 } 
+@font-face{
+    font-family: "regular";
+    src: local("regular"), url(fonts/Nunito-Regular.ttf);
+}
+html{
+    font-family: regular;
+}
 #notif{
     width: 50%;
     height: 60%;
