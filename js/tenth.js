@@ -2,6 +2,7 @@
     window.addEventListener('load', init);
 
     function init() {
+        if (!sessionStorage.getItem(10)) document.getElementById("notif").showModal();
         document.getElementById('add').addEventListener('click', addBall);
         document.getElementById('delete').disabled = true;
         document.getElementById("start").addEventListener('click', pruf)

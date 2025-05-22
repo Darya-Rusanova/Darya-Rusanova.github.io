@@ -2,6 +2,7 @@
     window.addEventListener('load', init);
 
     function init() {
+        if (!sessionStorage.getItem(12)) document.getElementById("notif").showModal();
         document.getElementById("start").addEventListener('click', start);
     }
 

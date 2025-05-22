@@ -2,6 +2,7 @@
     window.addEventListener('load', init);
 
     function init() {
+        if (!sessionStorage.getItem(7)) document.getElementById("notif").showModal();
         document.getElementById('in').addEventListener('change', generateTable);
         document.getElementById("start").addEventListener('click',crus);
         document.getElementById("repeat").addEventListener("click",generateTable);
