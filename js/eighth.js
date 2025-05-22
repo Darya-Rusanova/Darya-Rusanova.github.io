@@ -2,6 +2,7 @@
     window.addEventListener('load', init);
 
     function init() {
+        if (!sessionStorage.getItem(8)) document.getElementById("notif").showModal();
         document.getElementById('in').addEventListener('change', generateTable);
         document.getElementById("start").addEventListener('click',daic);
         document.getElementById("repeat").addEventListener("click",generateTable);
@@ -161,7 +162,7 @@
         }
         console.log(p);
         const balls=document.getElementById("output").children;
-        ctx.strokeStyle='red';
+        ctx.strokeStyle="rgb(255, 117, 143)";
         ctx.lineWidth = 15;
         for (let i=1;i<p.length;i++)
         {
@@ -185,7 +186,7 @@
         way.innerText='';
         for(let i=1;i<p.length;i++){
             if(ans[i]<0) rec(i);
-            way.innerText += i + "=>" + ans[i]+"\n";
+            way.innerText += "Расстояние до вершины "+i + ": " + ans[i]+"\n";
         }
     } 
 })();

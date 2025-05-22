@@ -2,6 +2,7 @@
     window.addEventListener('load', init);
 
     function init() {
+        if (!sessionStorage.getItem(7)) document.getElementById("notif").showModal();
         document.getElementById('in').addEventListener('change', generateTable);
         document.getElementById("start").addEventListener('click',crus);
         document.getElementById("repeat").addEventListener("click",generateTable);
@@ -137,25 +138,29 @@
         g.sort(compare);
         let res =[];
         let tree_id=Array.from(Array(n+1).keys());
-        for (let i = 0;i<g.length;i++)
+        for (let i = 0;i<g.length;++i)
         {
-            if (tree_id[g[i][1]]!=tree_id[g[i][2]])
+            if (tree_id[g[i][1]]!==tree_id[g[i][2]])
             {
-                res.push([g[i][1],g[i][2]])
+                const a=Number(g[i][1]), b=Number(g[i][2]);
+                res.push([a,b])
+                for (let j=1; j<=n; ++j)
+                {
+                    console.log(tree_id[j], tree_id[g[i][2]])
+                    if (tree_id[j] == tree_id[b])
+                        tree_id[j] = tree_id[a];
+                }
             }
-            for (let j=1; j<=n; j++)
-            {
-                if (tree_id[j] == tree_id[g[i][2]])
-                    tree_id[j] = tree_id[g[i][1]];
-            }
+            console.log(tree_id);
         }
-        if(res.length!==n-1)
+        if(res.length!=n-1)
         {
+            console.log(res);
             document.getElementById("res").showModal();
             return 0;
         }
         const balls=document.getElementById("output").children;
-        ctx.strokeStyle='red';
+        ctx.strokeStyle="rgb(255, 117, 143)";
         ctx.lineWidth = 15;
         for (let i =0;i<res.length;i++)
         {
