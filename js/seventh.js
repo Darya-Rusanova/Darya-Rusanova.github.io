@@ -150,7 +150,7 @@
         console.log(res.length,n);
         if(res.length!==n-1)
         {
-            alert();
+            document.getElementById("res").showModal();
             return 0;
         }
         const balls=document.getElementById("output").children;

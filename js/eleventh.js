@@ -14,7 +14,7 @@
         for (let i=0;i<prufer_code.length;i++) 
         {
             if (prufer_code[i]>=prufer_code.length+2 || prufer_code[i]<0 || Number.isNaN(prufer_code[i])) {
-                alert("ты че еблан");
+                document.getElementById("al").showModal();
                 return 0;
             }
         }
