@@ -75,7 +75,7 @@ body:has(dialog[open]) {
         "name close"
 }
 .notif-body > p{
-    font-size: 25px;
+    font-size: 20px;
     text-align: justify;
 }
 .header{
@@ -101,4 +101,22 @@ body:has(dialog[open]) {
     margin-left: auto;
     width: 90px;
     height: 90px;
+}
+.gif{
+  width: 100%;
+  height: 50%;
+  text-align: center;
+}
+#notif::-webkit-scrollbar {
+    width: 15px;
+}
+  
+#notif::-webkit-scrollbar-thumb {
+    border-radius: 50px;
+    background-color: white;
+}
+#notif::-webkit-scrollbar-button:increment:increment {
+    height: 10%;
+    display: block;
+    background: transparent;
 }
