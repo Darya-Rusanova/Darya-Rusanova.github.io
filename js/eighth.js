@@ -185,7 +185,7 @@
         way.innerText='';
         for(let i=1;i<p.length;i++){
             if(ans[i]<0) rec(i);
-            way.innerText += i + "=>" + ans[i]+"\n";
+            way.innerText += "Расстояние до вершины "+i + ": " + ans[i]+"\n";
         }
     } 
 })();
