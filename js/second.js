@@ -44,8 +44,8 @@
         let ans = 1;
         let parent = [user_ans[1]];
         for(let i = 1; i<user_ans.length-1; i++){
-            console.log("now on "+ user_ans[i]+", next is " + user_ans[i+1])
-            console.log(parent)
+            // console.log("now on "+ user_ans[i]+", next is " + user_ans[i+1])
+            // console.log(parent)
             test = i;
             while(isEmpty(table.rows[user_ans[test]].cells)){
                 parent.pop();
@@ -59,7 +59,7 @@
             if(parent.length == 0){
                 for(let i = 1; i<user_ans.length; i++){
                     if(!isEmpty(table.rows[user_ans[i]].cells)){
-                        console.log(user_ans[i] + "'s row is not empty")
+                        // console.log(user_ans[i] + "'s row is not empty")
                         message(0);
                         return;
                         }
@@ -72,13 +72,13 @@
                 parent.push(user_ans[i+1]);
             }
             else{
-                ans = 0;
-                break;
+                message(0);
+                return;
             }
         }
         for(let i = 1; i<user_ans.length; i++){
                     if(!isEmpty(table.rows[user_ans[i]].cells)){
-                        console.log(user_ans[i] + "'s row is not empty")
+                        // console.log(user_ans[i] + "'s row is not empty")
                         ans = 0;
                         break;
                         }
