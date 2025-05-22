@@ -2,16 +2,16 @@
     window.addEventListener('load', init);
 
     function init() {
-        if (!sessionStorage.getItem(7)) document.getElementById("notif").showModal();
+        if (!sessionStorage.getItem(9)) document.getElementById("notif").showModal();
         document.getElementById('in').addEventListener('change', generateTable);
-        document.getElementById("start").addEventListener('click',crus);
+        document.getElementById("start").addEventListener('click', start);
         document.getElementById("repeat").addEventListener("click",generateTable);
         canvas = document.getElementById("canvas");
         ctx = canvas.getContext("2d");
     }
 
     function generateTable(){
-        document.getElementById("way").innerText='';
+        document.getElementById("new_table").replaceChildren();
         let n = document.getElementById('in').value;
         const container = document.getElementById('input');
         container.innerHTML='';
@@ -54,9 +54,10 @@
 
         container.appendChild(table);
         createGraph();
-        document.getElementsByClassName('way')[0].style.visibility = 'visible';
+        // document.getElementsByClassName('way')[0].style.visibility = 'visible';
         document.getElementById('start').style.visibility = 'visible';
     }
+
     function changeTable()
     {
         let cell = this.parentNode.cellIndex;
@@ -76,10 +77,12 @@
             const angle = (i / n) * (2 * Math.PI);
             ball.style.left=radius * Math.cos(angle) + (output.offsetWidth / 2)+"px";
             ball.style.top=radius * Math.sin(angle) + (output.offsetHeight / 2)+"px";
+            // ball.addEventListener('click', clickBall);
             output.append(ball);
         }
         change();
     }
+    
     function change()
     {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -110,68 +113,23 @@
         ctx.lineTo(x2, y2);
         ctx.stroke(); 
     }
-    function compare( a, b ) {
-        if ( a[0] < b[0]){
-            return -1;
-        }
-        if ( a[0] > b[0] ){
-            return 1;
-        }
-        return 0;
-    }
-    function crus()
+    
+    function start()
     {
-        const n = Number(document.getElementById('in').value);
-        let g=[];
-        let table = document.getElementById("table");
-        for (let i =1;i<=n;i++)
-        {
-            for (let j =i+1;j<=n;j++)
-            {
-                let v = Number(table.rows[i].cells[j].children[0].value);
-                    if (v!==0)
-                    {
-                        g.push([v,i,j]);
-                    }
-            }
+        sessionStorage.setItem(9,1);
+        let table = document.getElementById("table").cloneNode(true);
+        let n = document.getElementById("in").value;
+        for (let k=1; k<n; ++k){
+            table.rows[k].cells[k].innerText = 0;
         }
-        g.sort(compare);
-        let res =[];
-        let tree_id=Array.from(Array(n+1).keys());
-        for (let i = 0;i<g.length;++i)
-        {
-            if (tree_id[g[i][1]]!==tree_id[g[i][2]])
-            {
-                const a=Number(g[i][1]), b=Number(g[i][2]);
-                res.push([a,b])
-                for (let j=1; j<=n; ++j)
-                {
-                    console.log(tree_id[j], tree_id[g[i][2]])
-                    if (tree_id[j] == tree_id[b])
-                        tree_id[j] = tree_id[a];
-                }
-            }
-            console.log(tree_id);
-        }
-        if(res.length!=n-1)
-        {
-            console.log(res);
-            document.getElementById("res").showModal();
-            return 0;
-        }
-        const balls=document.getElementById("output").children;
-        ctx.strokeStyle='red';
-        ctx.lineWidth = 15;
-        for (let i =0;i<res.length;i++)
-        {
-            drawLine(balls[res[i][0]-1],balls[res[i][1]-1]);
-        }
-        let ans=0;
-        for (let i =0;i<res.length;i++)
-        {
-            ans+=Number(table.rows[res[i][0]].cells[res[i][1]].children[0].value);
-        }
-        document.getElementById("way").innerText=ans;
-        sessionStorage.setItem(7,1);
+        for (let k=1; k<n; ++k){
+            for (let i=1; i<n; ++i){
+                for (let j=1; j<n; ++j){
+                    console.log((table.rows[i].cells[k].innerText) + (table.rows[k].cells[j].innerText))
+                    table.rows[i].cells[j].innerText = Math.min(parceInt(table.rows[i].cells[j].innerText), parseInt(table.rows[i].cells[k].innerText) + parceInt(table.rows[k].cells[j].innerText));
+                } 
+            } 
+        } 
+        document.getElementById("new_table").replaceChildren(table);
     } 
 })();
