@@ -2,7 +2,6 @@
     window.addEventListener('load', init);
 
     function init() {
-        if (!sessionStorage.getItem(11)) document.getElementById("notif").showModal();
         document.getElementById("start").addEventListener('click', pruf);
         document.getElementById("repeat").addEventListener("click",clear);
         canvas = document.getElementById("canvas");

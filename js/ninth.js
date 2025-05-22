@@ -119,17 +119,35 @@
         sessionStorage.setItem(9,1);
         let table = document.getElementById("table").cloneNode(true);
         let n = document.getElementById("in").value;
-        for (let k=1; k<n; ++k){
-            table.rows[k].cells[k].innerText = 0;
+        matrix = []
+        for (let i=1; i<=n; ++i){
+            matrix.push([])
+            for (let j=1; j<=n; ++j){
+                if(i==j){
+                    matrix[i-1].push(0);
+                } 
+                // else if(table.rows[i].cells[j].children.length == 0) matrix[i-1].push(Number.MAX_VALUE)
+                else {
+                    let val = table.rows[i].cells[j].children[0].value
+                    if(val == "") matrix[i-1].push(Number.MAX_VALUE)
+                    else matrix[i-1].push(val)
+                }
+            }
         }
-        for (let k=1; k<n; ++k){
-            for (let i=1; i<n; ++i){
-                for (let j=1; j<n; ++j){
-                    console.log((table.rows[i].cells[k].innerText) + (table.rows[k].cells[j].innerText))
-                    table.rows[i].cells[j].innerText = Math.min(parceInt(table.rows[i].cells[j].innerText), parseInt(table.rows[i].cells[k].innerText) + parceInt(table.rows[k].cells[j].innerText));
+        // console.log(matrix)
+        for (let k=0; k<n; ++k){
+            for (let i=0; i<n; ++i){
+                for (let j=0; j<n; ++j){
+                    matrix[i][j] = Math.min(matrix[i][j], Number(matrix[i][k]) + Number(matrix[k][j]));
                 } 
             } 
         } 
+        for (let i=1; i<=n; ++i){
+            for (let j=1; j<=n; ++j){
+                if(matrix[i-1][j-1] == Number.MAX_VALUE)  table.rows[i].cells[j].innerText = ""
+                else table.rows[i].cells[j].innerText = matrix[i-1][j-1]
+            }
+        }
         document.getElementById("new_table").replaceChildren(table);
     } 
 })();
