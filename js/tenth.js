@@ -122,6 +122,7 @@
     }
 
     function pruf(){
+        sessionStorage.setItem(10,1);
         let n = document.getElementsByClassName("ball").length;
         for(let i=1;i<=n;i++)
         {

@@ -20,6 +20,7 @@
         }
         if (prufer_code[prufer_code.length-1]<prufer_code.length)
         {
+            sessionStorage.setItem(11,1);
             console.log(prufer_code);
             let n = prufer_code.length + 2;
             let degree =[];

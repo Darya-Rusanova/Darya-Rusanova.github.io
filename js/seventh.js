@@ -118,7 +118,6 @@
     }
     function crus()
     {
-        sessionStorage.setItem(7,1);
         const n = Number(document.getElementById('in').value);
         let g=[];
         let table = document.getElementById("table");
@@ -148,6 +147,12 @@
                     tree_id[j] = tree_id[g[i][1]];
             }
         }
+        console.log(res.length,n);
+        if(res.length!==n-1)
+        {
+            alert();
+            return 0;
+        }
         const balls=document.getElementById("output").children;
         ctx.strokeStyle='red';
         ctx.lineWidth = 15;
@@ -155,5 +160,6 @@
         {
             drawLine(balls[res[i][0]-1],balls[res[i][1]-1]);
         }
+        sessionStorage.setItem(7,1);
     } 
 })();
