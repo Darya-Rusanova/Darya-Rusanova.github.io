@@ -63,10 +63,10 @@
     border-radius: 30px 30px;
     border: 5px solid #519dd0;
     text-align: center;
-    margin-top: 20px;
+    margin-top: 30px;
     padding: 15px;
     visibility: hidden;
-    height: 45px;
+    height: auto;
     margin-left: 20%;
 }
 
