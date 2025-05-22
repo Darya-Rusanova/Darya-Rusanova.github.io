@@ -9,6 +9,7 @@
 
 
     function start(){
+        sessionStorage.setItem(12,1);
         let balls = (document.querySelectorAll(".ball"));
         sortByDegree(balls).forEach(ball => {
             let isOccupied = new Array(20).fill(false);
