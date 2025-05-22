@@ -3,12 +3,14 @@
 
     function init() {
         document.getElementById('in').addEventListener('change', generateTable);
-        document.getElementById("start").addEventListener('click',crus)
+        document.getElementById("start").addEventListener('click',crus);
+        document.getElementById("repeat").addEventListener("click",generateTable);
         canvas = document.getElementById("canvas");
         ctx = canvas.getContext("2d");
     }
 
     function generateTable(){
+        document.getElementById("way").innerText='';
         let n = document.getElementById('in').value;
         const container = document.getElementById('input');
         container.innerHTML='';
@@ -118,7 +120,6 @@
     }
     function crus()
     {
-        sessionStorage.setItem(7,1);
         const n = Number(document.getElementById('in').value);
         let g=[];
         let table = document.getElementById("table");
@@ -148,6 +149,11 @@
                     tree_id[j] = tree_id[g[i][1]];
             }
         }
+        if(res.length!==n-1)
+        {
+            document.getElementById("res").showModal();
+            return 0;
+        }
         const balls=document.getElementById("output").children;
         ctx.strokeStyle='red';
         ctx.lineWidth = 15;
@@ -155,5 +161,12 @@
         {
             drawLine(balls[res[i][0]-1],balls[res[i][1]-1]);
         }
+        let ans=0;
+        for (let i =0;i<res.length;i++)
+        {
+            ans+=Number(table.rows[res[i][0]].cells[res[i][1]].children[0].value);
+        }
+        document.getElementById("way").innerText=ans;
+        sessionStorage.setItem(7,1);
     } 
 })();

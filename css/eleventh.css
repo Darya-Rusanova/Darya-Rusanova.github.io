@@ -1,0 +1,10 @@
+.output{
+    margin: 0 auto;
+    grid-area: output;
+    box-sizing: border-box;
+    width: 1000px;
+    height: 500px;
+    position: relative;
+    margin-bottom: 50px;
+    margin-top: 50px;
+}

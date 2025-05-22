@@ -3,7 +3,8 @@
 
     function init() {
         document.getElementById('in').addEventListener('change', generateTable);
-        document.getElementById("start").addEventListener('click',daic)
+        document.getElementById("start").addEventListener('click',daic);
+        document.getElementById("repeat").addEventListener("click",generateTable);
         canvas = document.getElementById("canvas");
         ctx = canvas.getContext("2d");
     }
