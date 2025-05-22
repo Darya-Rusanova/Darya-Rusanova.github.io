@@ -34,6 +34,10 @@
     
     function start()
     {
+        if(document.getElementById("nodes").innerText.split(" ").length != (new Set(document.getElementById("nodes").innerText.split(" "))).size){
+            message(0);
+            return;
+        }
         let table = document.getElementById("table").cloneNode(true);
         let shown_table = document.getElementById("table");
         let user_ans = '0'+document.getElementById("nodes").innerText.split(" ").join('');

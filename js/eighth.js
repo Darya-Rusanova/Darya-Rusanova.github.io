@@ -115,15 +115,6 @@
         ctx.lineTo(x2, y2);
         ctx.stroke(); 
     }
-    function compare( a, b ) {
-        if ( a[0] < b[0]){
-            return -1;
-        }
-        if ( a[0] > b[0] ){
-            return 1;
-        }
-        return 0;
-    }
     function daic()
     {
         sessionStorage.setItem(8,1);
@@ -160,7 +151,6 @@
             if (d[v] == 10000000000)
                 break;
             u[v] = true;
-            console.log(v);
             for (let j=0; j<g[v].length; ++j) {
                 let to = g[v][j][0], len = g[v][j][1];
                 if (d[v] + len < d[to]) {
@@ -178,9 +168,24 @@
             if (p[i]>0)
             {
                 drawLine(balls[i-1],balls[p[i]-1]);
-                console.log(i,p[i]);
             }
         }
-        
+        let ans=new Array(n+1).fill(-1);
+        ans[s]=0;
+        function rec(i){
+            if(ans[i]<0){
+                console.log(i,p[i]);
+                let a=rec(p[i]);
+                console.log(a);
+                ans[i]=a+Number(table.rows[i].cells[p[i]].children[0].value);
+                return ans[i];
+            }else return ans[i];
+        }
+        let way = document.getElementById("way");
+        way.innerText='';
+        for(let i=1;i<p.length;i++){
+            if(ans[i]<0) rec(i);
+            way.innerText += i + "=>" + ans[i]+"\n";
+        }
     } 
 })();
