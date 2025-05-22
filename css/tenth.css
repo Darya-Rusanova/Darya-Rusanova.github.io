@@ -123,3 +123,6 @@
 .ball:hover{
     background-color: #efd2f0;
 }
+:disabled{
+    background-color: gray;
+}
