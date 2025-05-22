@@ -150,15 +150,16 @@
         let tree_id=Array.from(Array(n+1).keys());
         for (let i = 0;i<g.length;++i)
         {
-            if (tree_id[g[i][1]]!==tree_id[g[i][2]])
+            const a=Number(g[i][1]), b=Number(g[i][2]);
+            if (tree_id[a]!=tree_id[b])
             {
-                const a=Number(g[i][1]), b=Number(g[i][2]);
                 res.push([a,b])
+                let old = tree_id[b], ne = tree_id[a];
                 for (let j=1; j<=n; ++j)
                 {
-                    console.log(tree_id[j], tree_id[g[i][2]])
-                    if (tree_id[j] == tree_id[b])
-                        tree_id[j] = tree_id[a];
+                    console.log(tree_id[j], tree_id[b], tree_id[j] == tree_id[b])
+                    if (tree_id[j] == old)
+                        tree_id[j] = ne;
                 }
             }
             console.log(tree_id);
