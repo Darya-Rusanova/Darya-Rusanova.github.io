@@ -8,10 +8,27 @@
 }
 .header{
     grid-area: head;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: auto;
+    grid-template-areas:
+       "exit info"
 }
 #exit{
+    grid-area: exit;
     text-align: left;
     margin: 25px;
+    width: 90px;
+    height: 90px;
+}
+#info{
+    grid-area: info;
+    margin: 25px;
+    cursor: pointer;
+    margin-right: 25px;
+    margin-left: auto;
+    width: 90px;
+    height: 90px;
 }
 .buttons{
     margin: 0 auto;
@@ -154,13 +171,13 @@ th {
     font-size: 24px;
 }
 .checked, .ball:hover{
-    background-color:#e8b9ea;
+    background-color:#de8fbd;
 }
 .pass{
     background-color: #de8fbd;
 }
 #here{
-    background-color: #e8b9ea;
+    background-color: #b164de;
 }
 .exercise{
     grid-area: exercise;
@@ -212,14 +229,14 @@ body:has(dialog[open]) {
     overflow: hidden;
 }
 #res::backdrop {
-    background-color: rgb(0 0 0 / 30%);
+    background-color: rgb(0 0 0 / 35%);
 }
 #res>p{
     margin-top: -5px;
     height: auto;
 }
+
 #close{
-    grid-area: close;
     cursor: pointer;
     margin-left: 85%;
 }

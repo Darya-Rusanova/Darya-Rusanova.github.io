@@ -11,11 +11,24 @@
 </head>
 <body>
     <div class="container">
-        <header>
+        <div class="header">
             <a href="../index.html">
                 <img src="../image/home.PNG" class="button" id="exit"/>
             </a>
-        </header>
+            <img src="../image/info.PNG" class="button" id="info" onclick="window.notif.showModal()"/>
+        </div>
+
+        <dialog id="notif">
+            <div class="notif-head">
+                <h1>ПОМОЩЬ</h1> 
+                <img src="../image/close.PNG" alt="close" width="60px" height="60px" id="close-notif" onclick="window.notif.close()"/>
+            </div>
+            <div class="notif-body">
+                <p>1. Задайте граф нажатием на ячейки (1- ребро, 0 - нет ребра)</p>
+                <p>2. Выберите вершину с которой начнется обход</p>
+            </div>
+        </dialog>
+        
         <div class="body">
             <div class="exercise">
                 <p>Задайте граф матрицей смежности, система покажет степень вершин, количество компонент связности, определит является ли граф эйлеровым(полуэйлеровым), двудольным(полным двудольным)</p>
