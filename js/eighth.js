@@ -162,7 +162,7 @@
         }
         console.log(p);
         const balls=document.getElementById("output").children;
-        ctx.strokeStyle='red';
+        ctx.strokeStyle="rgb(255, 117, 143)";
         ctx.lineWidth = 15;
         for (let i=1;i<p.length;i++)
         {

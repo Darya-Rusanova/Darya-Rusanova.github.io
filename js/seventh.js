@@ -160,7 +160,7 @@
             return 0;
         }
         const balls=document.getElementById("output").children;
-        ctx.strokeStyle='red';
+        ctx.strokeStyle="rgb(255, 117, 143)";
         ctx.lineWidth = 15;
         for (let i =0;i<res.length;i++)
         {
