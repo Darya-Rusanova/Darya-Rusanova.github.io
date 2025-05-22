@@ -21,7 +21,6 @@
             let color = 0;
             while(color < 20){
                 if(isOccupied[color] == false){
-                    console.log(balls[ball[0]-1]);
                     balls[ball[0]-1].style.backgroundColor = colors[color];
                     return;
                 }
